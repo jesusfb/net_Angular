@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["DaltroStore.Identity.API.csproj", "."]
-RUN dotnet restore "./DaltroStore.Identity.API.csproj"
+RUN dotnet restore "/DaltroStore.Identity.API.csproj"
 COPY . .
 WORKDIR "/src/src/services/DaltroStore.Identity.API"
 RUN dotnet build "./DaltroStore.Identity.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
