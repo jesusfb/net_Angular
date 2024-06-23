@@ -13,11 +13,11 @@ COPY ["DaltroStore.Identity.API.csproj", "."]
 RUN dotnet restore "DaltroStore.Identity.API.csproj"
 COPY . .
 WORKDIR "/src/src/services/DaltroStore.Identity.API"
-RUN dotnet build "./DaltroStore.Identity.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "DaltroStore.Identity.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./DaltroStore.Identity.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "DaltroStore.Identity.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
